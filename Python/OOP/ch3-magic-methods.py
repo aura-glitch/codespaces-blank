@@ -74,15 +74,23 @@ class Book(Publication):
     def __getattr__(self, name):
         return name + " is not here"
 
+    # __call__ method can be used to call the object like a function
+    def __call__(self, title, author, price):
+        self.title = title
+        self.author = author
+        self.price = price
+
 b1 = Book("Tao Te Cheng", 15.00, "Lao Tzu", 81)
 b2 = Book("Bhagavad Gita", 15.00, "Lord Krishna", 81)
 b3 = Book("The Bible", 10.00, "God", 500)
+
+b1("Yellow Submarine", "me", 10.00)
 
 # books = [b1, b2, b3]
 # books.sort()
 # print([book.title for book in books])
 
-print(b1.randomprop)
+# print(b1.randomprop)
 
 # print(str(b1))
 # print(repr(b1))
