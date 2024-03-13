@@ -52,7 +52,7 @@ class Book(Publication):
         return self.price < value.price
     
 
-    # TODO: __getattribute__ called when an attr is retrieved. Don't
+    # __getattribute__ called when an attr is retrieved. Don't
     # directly access the attr name otherwise a recursive loop is created
     def __getattribute__(self, name):
         if name == "price":
@@ -61,7 +61,7 @@ class Book(Publication):
             return p - (p * d)
         return super().__getattribute__(name)
     
-    # TODO: __setattr__ called when an attribute value is set. Don't set the attr
+    # __setattr__ called when an attribute value is set. Don't set the attr
     # directly here otherwise a recursive loop causes a crash
     def __setattr__(self, name, value) -> None:
         if name == "price":
@@ -69,7 +69,7 @@ class Book(Publication):
                 raise ValueError("The 'price' attr must be float")
         return super().__setattr__(name, value)
     
-    # TODO: __getattr__ called when __getattribute__ lookup fails - you can
+    # __getattr__ called when __getattribute__ lookup fails - you can
     # pretty much generate attributes on the fly with this method
     def __getattr__(self, name):
         return name + " is not here"
